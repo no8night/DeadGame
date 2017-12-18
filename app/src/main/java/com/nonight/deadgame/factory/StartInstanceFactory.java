@@ -2,6 +2,7 @@ package com.nonight.deadgame.factory;
 
 import com.nonight.deadgame.model.Instance;
 import com.nonight.deadgame.model.InstanceNode;
+import com.nonight.deadgame.model.RewardContent;
 import com.nonight.deadgame.model.enums.InstanceNodeType;
 import com.nonight.deadgame.model.enums.InstanceStatus;
 import com.nonight.deadgame.model.enums.NodeStatus;
@@ -33,6 +34,14 @@ public class StartInstanceFactory {
     }
 
     private static List<InstanceNode> createNodes(Instance instance) {
+
+        List<InstanceNode> result = new ArrayList<>();
+        for (int i =1;i<instance.getNodeNumber()+1;i++){
+            result.add(createNode(i));
+
+
+        }
+        return result;
 
 
 
@@ -80,14 +89,15 @@ public class StartInstanceFactory {
                 break;
             case 8:
                 instanceNode.setNodeType(InstanceNodeType.REWARD);
-                instanceNode.setDramaContent(drama1);
+                RewardContent rewardContent = new RewardContent();
+                rewardContent.setDramaString(drama8);
+                rewardContent.setRewardPoint(rewardPoint);
+
+                instanceNode.setRewardContent(rewardContent);
 
                 break;
         }
-
-
-
-
+        return instanceNode;
     }
     private static final String drama1 = "冰冷，抖动。。。";
 
@@ -99,6 +109,9 @@ public class StartInstanceFactory {
     private static final String drama7 = ">现在，他们3人每人身上有100点奖励点数。";
 
     private static final String drama8 = "在30分钟后，他们即将进入他们的第一个冒险世界。";
+
+    private static final Integer rewardPoint = 300;
+
 
     /*
     <string name="start_game_1">冰冷，抖动。。。</string>

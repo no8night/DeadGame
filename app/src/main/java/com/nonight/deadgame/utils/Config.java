@@ -12,11 +12,6 @@ public class Config {
 
     public static final String saveDataKeyString = "data";
 
-    public static final Skill pingA(){
-        Skill pingA = new Skill();
-        pingA.setCode(1991);
-        pingA.setName("平a");
-        pingA.setIntroduction("普通攻击");
-        return pingA;
-    }
+
+    public static final String skillsLibrary = "skillsLibrary";
 }

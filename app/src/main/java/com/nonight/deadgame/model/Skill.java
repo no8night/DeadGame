@@ -11,6 +11,8 @@ public class Skill implements Serializable {
     private String name,introduction;
     private Integer code;
 
+    private Double P;
+
     public String getName() {
         return name;
     }
@@ -33,5 +35,13 @@ public class Skill implements Serializable {
 
     public void setCode(Integer code) {
         this.code = code;
+    }
+
+    public Double getP() {
+        return P;
+    }
+
+    public void setP(Double p) {
+        P = p;
     }
 }

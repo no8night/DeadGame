@@ -3,6 +3,7 @@ package com.nonight.deadgame.model;
 import com.nonight.deadgame.model.enums.Gender;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -17,7 +18,7 @@ public class TeamMenber implements Serializable {
     private List<Equipment> equipments;
     private Integer hp,mp;
     private Gender gender;
-
+    private Double P;     //评价  属性、技能更改后会更新
 
     public TeamMenber(String name,Gender gender, Integer l, Integer m, Integer t, Integer j, Integer RP, List<Skill> skills) {
         this.name = name;
@@ -28,6 +29,27 @@ public class TeamMenber implements Serializable {
         J = j;
         this.RP = RP;
         this.skills = skills;
+    }
+
+    public void updateP(){
+
+        //计算属性评分
+        if (L>=M && L>=T && L>=J){
+            P = L + (M+T+J)*0.7;
+        }else  if (M>=L && M>=T && M>=J){
+            P = L + (M+T+J)*0.7;
+        }else if (T>=M && T>=L && T>=J){
+            P = L + (M+T+J)*0.7;
+        }else if (J>=M && J>=T && J>=L){
+            P = L + (M+T+J)*0.7;
+        }else {
+            P = (double) (L + M + T + J);
+        }
+        //计算技能评分
+        for (Skill skill: skills) {
+            P = P + skill.getP();
+        }
+
     }
 
     public Gender getGender() {
@@ -50,32 +72,38 @@ public class TeamMenber implements Serializable {
         return L;
     }
 
-    public void setL(Integer l) {
-        L = l;
-    }
+
 
     public Integer getM() {
         return M;
     }
 
-    public void setM(Integer m) {
-        M = m;
-    }
 
     public Integer getT() {
         return T;
     }
 
-    public void setT(Integer t) {
-        T = t;
-    }
 
     public Integer getJ() {
         return J;
     }
 
+
+    public void setT(Integer t) {
+        T = t;
+        updateP();
+    }
+    public void setL(Integer l) {
+        L = l;
+        updateP();
+    }
+    public void setM(Integer m) {
+        M = m;
+        updateP();
+    }
     public void setJ(Integer j) {
         J = j;
+        updateP();
     }
 
     public Integer getRP() {
@@ -90,8 +118,16 @@ public class TeamMenber implements Serializable {
         return skills;
     }
 
-    public void setSkills(List<Skill> skills) {
-        this.skills = skills;
+//    public void setSkills(List<Skill> skills) {
+//        this.skills = skills;
+//    }
+
+    public void addSkills(Skill skill){
+        if (skills==null){
+            skills = new ArrayList<>();
+        }
+        skills.add(skill);
+        updateP();
     }
 
     public List<Equipment> getEquipments() {
@@ -116,5 +152,13 @@ public class TeamMenber implements Serializable {
 
     public void setMp(Integer mp) {
         this.mp = mp;
+    }
+
+    public Double getP() {
+        return P;
+    }
+
+    public void setP(Double p) {
+        P = p;
     }
 }

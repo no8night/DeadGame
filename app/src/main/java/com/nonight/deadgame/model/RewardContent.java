@@ -14,7 +14,29 @@ public class RewardContent implements Serializable {
 
     private List<Item> items;
 
-    private Integer
+    private Integer rewardPoint;
 
+    public String getDramaString() {
+        return dramaString;
+    }
 
+    public void setDramaString(String dramaString) {
+        this.dramaString = dramaString;
+    }
+
+    public List<Item> getItems() {
+        return items;
+    }
+
+    public void setItems(List<Item> items) {
+        this.items = items;
+    }
+
+    public Integer getRewardPoint() {
+        return rewardPoint;
+    }
+
+    public void setRewardPoint(Integer rewardPoint) {
+        this.rewardPoint = rewardPoint;
+    }
 }

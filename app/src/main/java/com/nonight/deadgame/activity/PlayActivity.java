@@ -35,11 +35,11 @@ public class PlayActivity extends Activity{
         listView = findViewById(R.id.play_lv);
 
 
+        //判断有无副本是准备准备状态的
+        saveData.get
 
     }
 
-    private void playFirst() {
-    }
 
 
     @Override

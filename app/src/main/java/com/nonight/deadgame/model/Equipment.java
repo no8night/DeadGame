@@ -8,9 +8,11 @@ import java.io.Serializable;
 public class Equipment implements Serializable {
 
 
-    private String name,introduction;
-    private Integer code;
+    private String name,introduction; //名字  介绍
+    private Integer code,P;           //代码  评分
 
+    private String imgPath;           //图片asset路径
+    private EquipmentType type;
 
     public String getName() {
         return name;
@@ -34,5 +36,21 @@ public class Equipment implements Serializable {
 
     public void setCode(Integer code) {
         this.code = code;
+    }
+
+    public String getImgPath() {
+        return imgPath;
+    }
+
+    public void setImgPath(String imgPath) {
+        this.imgPath = imgPath;
+    }
+
+    public Integer getP() {
+        return P;
+    }
+
+    public void setP(Integer p) {
+        P = p;
     }
 }

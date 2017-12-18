@@ -1,7 +1,10 @@
 package com.nonight.deadgame.factory;
 
 import com.nonight.deadgame.model.Instance;
+import com.nonight.deadgame.model.Skill;
 import com.nonight.deadgame.model.enums.InstanceStatus;
+
+import java.util.List;
 
 /**
  * Created by Administrator on 2017/12/18.
@@ -12,15 +15,19 @@ import com.nonight.deadgame.model.enums.InstanceStatus;
 public class InstanceFactory {
 
 
-    public static void createStartInstance(){
+    public static Instance createStartInstance(){
 
         Instance instance = new Instance();
 
         instance.setId(1);
         instance.setNodeNumber(8);
         instance.setStatus(InstanceStatus.CREATE);
-
+        return instance;
     }
+
+
+
+
 
 
 }

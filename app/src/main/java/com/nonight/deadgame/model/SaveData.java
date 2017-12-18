@@ -2,6 +2,8 @@ package com.nonight.deadgame.model;
 
 import android.content.Context;
 
+import com.nonight.deadgame.factory.InstanceFactory;
+import com.nonight.deadgame.factory.SkillsFactory;
 import com.nonight.deadgame.model.enums.Gender;
 import com.nonight.deadgame.model.enums.TeamStatus;
 import com.nonight.deadgame.utils.Config;
@@ -21,14 +23,15 @@ public class SaveData implements Serializable{
 
     private Integer theNumberOfCompletedTasks;   //完成任务次数
     private Integer theNumberOfTeamMenber;   //队伍人数
-    private List<TeamMenber> teamMenbers;        //队伍成员
+
     private Integer rewardPoint;                 //奖励点
     private Double appraise;                     //评价
-    private List<Equipment> equipments;
-    private List<Item> items;
-
     private TeamStatus teamStatus;               //状态
 
+
+    private List<Equipment> equipments;
+    private List<Item> items;
+    private List<TeamMenber> teamMenbers;        //队伍成员
     private List<Instance> instances;            //曾经经历过的副本
 
     private Date createDate;
@@ -37,9 +40,18 @@ public class SaveData implements Serializable{
 
     //初始化存档
     public SaveData init() {
+
+        initLibrary();
+
+
         theNumberOfCompletedTasks = 0;
         theNumberOfTeamMenber = 3;
         rewardPoint = 0;
+
+        teamStatus = TeamStatus.READY;
+
+
+
         List<Skill> skills = new ArrayList<>();
         skills.add(Config.pingA());
         TeamMenber mainTeamMenber = new TeamMenber("郑吒", Gender.Man, 9, 8, 10, 5, 10, skills);
@@ -52,8 +64,36 @@ public class SaveData implements Serializable{
         teamMenbers.add(womanTeamMenber);
         teamMenbers.add(manTeamMenber);
 
+
+        equipments = new ArrayList<>();
+        items = new ArrayList<>();
+        instances = new ArrayList<>();
+
+        Instance startInstance = InstanceFactory.createStartInstance();
+        instances.add(startInstance);
+
+
+
+
         return this;
     }
+
+    private void initLibrary(Context context) {
+
+        List<Skill> skills = SkillsFactory.getAllSkills();
+        for (Skill skill:skills) {
+            SharedPrefsUtil.putValue(context,Config.skillsLibrary,skill.getCode().toString(),GsonHelper.getGson().toJson(skill));
+        }
+
+
+    }
+
+    public void updateMenber(){
+        for (TeamMenber teamMenber:teamMenbers) {
+
+        }
+    }
+
 
     public void save(Context context){
         String saveDataString = GsonHelper.getGson().toJson(this);
@@ -142,5 +182,13 @@ public class SaveData implements Serializable{
 
     public void setUpdateDate(Date updateDate) {
         this.updateDate = updateDate;
+    }
+
+    public TeamStatus getTeamStatus() {
+        return teamStatus;
+    }
+
+    public void setTeamStatus(TeamStatus teamStatus) {
+        this.teamStatus = teamStatus;
     }
 }
