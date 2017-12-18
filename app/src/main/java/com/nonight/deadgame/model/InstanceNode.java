@@ -15,6 +15,35 @@ public class InstanceNode implements Serializable {
     private NodeStatus status;
     private InstanceNodeType nodeType;
 
+    private String dramaContent;
+
+    private BattleContent battleContent;
+
+    private RewardContent rewardContent;
+
+    public String getDramaContent() {
+        return dramaContent;
+    }
+
+    public void setDramaContent(String dramaContent) {
+        this.dramaContent = dramaContent;
+    }
+
+    public BattleContent getBattleContent() {
+        return battleContent;
+    }
+
+    public void setBattleContent(BattleContent battleContent) {
+        this.battleContent = battleContent;
+    }
+
+    public RewardContent getRewardContent() {
+        return rewardContent;
+    }
+
+    public void setRewardContent(RewardContent rewardContent) {
+        this.rewardContent = rewardContent;
+    }
 
     public Integer getId() {
         return id;

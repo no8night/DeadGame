@@ -39,7 +39,7 @@ public class SaveData implements Serializable{
     public SaveData init() {
         theNumberOfCompletedTasks = 0;
         theNumberOfTeamMenber = 3;
-        rewardPoint = 300;
+        rewardPoint = 0;
         List<Skill> skills = new ArrayList<>();
         skills.add(Config.pingA());
         TeamMenber mainTeamMenber = new TeamMenber("郑吒", Gender.Man, 9, 8, 10, 5, 10, skills);
