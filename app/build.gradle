@@ -1,8 +1,8 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 25
-    buildToolsVersion "25.0.2"
+    compileSdkVersion 27
+    buildToolsVersion '26.0.2'
 
     defaultConfig {
         applicationId "com.nonight.deadgame"
@@ -20,8 +20,24 @@ android {
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile fileTree(include: ['*.jar'], dir: 'libs')
     testCompile 'junit:junit:4.12'
-    compile 'com.android.support:appcompat-v7:25.3.1'
+    implementation 'com.android.support:appcompat-v7:27.0.2'
     compile 'com.google.code.gson:gson:2.8.2'
+    //textview 特效
+    def htextview_version = "0.1.2"
+    compile "com.hanks:htextview-base:$htextview_version"
+    compile "com.hanks:htextview-fade:$htextview_version"
+    compile "com.hanks:htextview-line:$htextview_version"
+    compile "com.hanks:htextview-rainbow:$htextview_version"
+    compile "com.hanks:htextview-typer:$htextview_version"
+    compile "com.hanks:htextview-scale:$htextview_version"
+    compile "com.hanks:htextview-evaporate:$htextview_version"
+    compile "com.hanks:htextview-fall:$htextview_version"
+    // optional
+    //波纹特效
+    compile 'com.github.traex.rippleeffect:library:1.3'
+    //dialog
+    implementation 'com.github.AdityaAnand1:Morphing-Material-Dialogs:0.0.1-alpha2'
+    implementation 'com.android.support:design:27.0.2'
 }

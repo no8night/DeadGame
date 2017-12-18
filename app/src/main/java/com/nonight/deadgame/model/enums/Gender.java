@@ -5,5 +5,5 @@ package com.nonight.deadgame.model.enums;
  */
 public enum Gender {
 
-    Man,Woman;
+    Man,Woman,Unknow;
 }

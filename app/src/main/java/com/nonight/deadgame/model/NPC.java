@@ -6,10 +6,10 @@ import java.io.Serializable;
 import java.util.List;
 
 /**
- * Created by nonight on 2017/12/17.
+ * Created by Administrator on 2017/12/18.
  */
-public class TeamMenber implements Serializable {
 
+public class NPC implements Serializable {
 
     private String name;
     private Integer L,M,T,J,RP;
@@ -19,7 +19,7 @@ public class TeamMenber implements Serializable {
     private Gender gender;
 
 
-    public TeamMenber(String name,Gender gender, Integer l, Integer m, Integer t, Integer j, Integer RP, List<Skill> skills) {
+    public NPC(String name,Gender gender, Integer l, Integer m, Integer t, Integer j, Integer RP, List<Skill> skills) {
         this.name = name;
         this.gender = gender;
         L = l;
@@ -28,14 +28,6 @@ public class TeamMenber implements Serializable {
         J = j;
         this.RP = RP;
         this.skills = skills;
-    }
-
-    public Gender getGender() {
-        return gender;
-    }
-
-    public void setGender(Gender gender) {
-        this.gender = gender;
     }
 
     public String getName() {
@@ -116,5 +108,13 @@ public class TeamMenber implements Serializable {
 
     public void setMp(Integer mp) {
         this.mp = mp;
+    }
+
+    public Gender getGender() {
+        return gender;
+    }
+
+    public void setGender(Gender gender) {
+        this.gender = gender;
     }
 }

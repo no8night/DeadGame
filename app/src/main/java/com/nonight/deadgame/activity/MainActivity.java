@@ -44,11 +44,11 @@ public class MainActivity extends AppCompatActivity {
     }
     /** 開始新遊戲  */
     private void startGame() {
-        //清空存檔
+        //初始化存檔
         saveData = new SaveData();
         saveData.init();
         saveData.save(this);
-        Intent intent = new Intent(this,ControllerActivity.class);
+        Intent intent = new Intent(this,PlayActivity.class);
         intent.putExtra(Config.saveDataString,saveData);
         startActivity(intent);
     }

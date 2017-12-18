@@ -2,6 +2,7 @@ package com.nonight.deadgame.activity;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.widget.ListView;
 
 import com.nonight.deadgame.R;
 import com.nonight.deadgame.model.SaveData;
@@ -16,6 +17,8 @@ public class PlayActivity extends Activity{
     BGMManager bgmManager;
     boolean isBGMContinue = true;
     SaveData saveData;
+    ListView listView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,10 +31,11 @@ public class PlayActivity extends Activity{
     }
 
     private void initview() {
-        if (saveData.getTheNumberOfCompletedTasks()==0){
-            playFirst();
-        }
-    
+
+        listView = findViewById(R.id.play_lv);
+
+
+
     }
 
     private void playFirst() {

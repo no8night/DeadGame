@@ -3,6 +3,7 @@ package com.nonight.deadgame.model;
 import android.content.Context;
 
 import com.nonight.deadgame.model.enums.Gender;
+import com.nonight.deadgame.model.enums.TeamStatus;
 import com.nonight.deadgame.utils.Config;
 import com.nonight.deadgame.utils.GsonHelper;
 import com.nonight.deadgame.utils.RandomUtils;
@@ -18,15 +19,20 @@ import java.util.List;
  */
 public class SaveData implements Serializable{
 
-    public Integer theNumberOfCompletedTasks;   //完成任务次数
-    public Integer theNumberOfTeamMenber;   //队伍人数
-    public List<TeamMenber> teamMenbers;        //队伍成员
-    public Integer rewardPoint;                 //奖励点
-    public Double appraise;                     //评价
-    public List<Equipment> equipments;
-    public List<Item> items;
-    public Date createDate;
-    public Date updateDate;
+    private Integer theNumberOfCompletedTasks;   //完成任务次数
+    private Integer theNumberOfTeamMenber;   //队伍人数
+    private List<TeamMenber> teamMenbers;        //队伍成员
+    private Integer rewardPoint;                 //奖励点
+    private Double appraise;                     //评价
+    private List<Equipment> equipments;
+    private List<Item> items;
+
+    private TeamStatus teamStatus;               //状态
+
+    private List<Instance> instances;            //曾经经历过的副本
+
+    private Date createDate;
+    private Date updateDate;
 
 
     //初始化存档
