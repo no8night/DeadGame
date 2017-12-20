@@ -3,9 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/DeadGame.iml" filepath="$PROJECT_DIR$/DeadGame.iml" />
-      <module fileurl="file://E:\asworkplace\DeadGame\DeadGame.iml" filepath="E:\asworkplace\DeadGame\DeadGame.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://E:\asworkplace\DeadGame\app\app.iml" filepath="E:\asworkplace\DeadGame\app\app.iml" />
     </modules>
   </component>
 </project>

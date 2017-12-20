@@ -19,7 +19,7 @@ public class Instance implements Serializable {
 
     private InstanceStatus status;
 
-    private Integer playNodesSeq;
+    private Integer playNodesSeq ;                 //进行中的节点
 
 
     public List<InstanceNode> getNodes() {
@@ -52,5 +52,13 @@ public class Instance implements Serializable {
 
     public void setStatus(InstanceStatus status) {
         this.status = status;
+    }
+
+    public Integer getPlayNodesSeq() {
+        return playNodesSeq;
+    }
+
+    public void setPlayNodesSeq(Integer playNodesSeq) {
+        this.playNodesSeq = playNodesSeq;
     }
 }

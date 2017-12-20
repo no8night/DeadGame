@@ -17,12 +17,7 @@ public class InstanceFactory {
 
     public static Instance createStartInstance(){
 
-        Instance instance = new Instance();
-
-        instance.setId(1);
-        instance.setNodeNumber(8);
-        instance.setStatus(InstanceStatus.CREATE);
-        return instance;
+        return  StartInstanceFactory.create();
     }
 
 

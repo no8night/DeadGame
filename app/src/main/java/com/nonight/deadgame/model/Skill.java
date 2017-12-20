@@ -9,7 +9,7 @@ public class Skill implements Serializable {
 
 
     private String name,introduction;
-    private Integer code;
+    private String code;
 
     private Double P;
 
@@ -29,11 +29,11 @@ public class Skill implements Serializable {
         this.introduction = introduction;
     }
 
-    public Integer getCode() {
+    public String getCode() {
         return code;
     }
 
-    public void setCode(Integer code) {
+    public void setCode(String code) {
         this.code = code;
     }
 

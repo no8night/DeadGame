@@ -39,9 +39,9 @@ public class SaveData implements Serializable{
 
 
     //初始化存档
-    public SaveData init() {
+    public SaveData init(Context context) {
 
-        initLibrary();
+        initLibrary(context);
 
 
         theNumberOfCompletedTasks = 0;
@@ -52,13 +52,17 @@ public class SaveData implements Serializable{
 
 
 
-        List<Skill> skills = new ArrayList<>();
-        skills.add(Config.pingA());
-        TeamMenber mainTeamMenber = new TeamMenber("郑吒", Gender.Man, 9, 8, 10, 5, 10, skills);
+
+        TeamMenber mainTeamMenber = new TeamMenber("郑吒", Gender.Man, 9, 8, 10, 5, 10);
         TeamMenber manTeamMenber = new TeamMenber(RandomUtils.randomManName(), Gender.Man, 5 + RandomUtils.randomNumberInX(4), 5 + RandomUtils.randomNumberInX(4),
-                5 + RandomUtils.randomNumberInX(4), 5 + RandomUtils.randomNumberInX(4), 1 + RandomUtils.randomNumberInX(5),skills);
+                5 + RandomUtils.randomNumberInX(4), 5 + RandomUtils.randomNumberInX(4), 1 + RandomUtils.randomNumberInX(5));
         TeamMenber womanTeamMenber = new TeamMenber(RandomUtils.randomWomanName(), Gender.Woman, 5 + RandomUtils.randomNumberInX(4), 5 + RandomUtils.randomNumberInX(4),
-                5 + RandomUtils.randomNumberInX(4), 5 + RandomUtils.randomNumberInX(4), 1 + RandomUtils.randomNumberInX(5),skills);
+                5 + RandomUtils.randomNumberInX(4), 5 + RandomUtils.randomNumberInX(4), 1 + RandomUtils.randomNumberInX(5));
+
+        mainTeamMenber.addSkills(SkillsFactory.getSkillByCode(context,SkillsFactory.PING_A));
+        manTeamMenber.addSkills(SkillsFactory.getSkillByCode(context,SkillsFactory.PING_A));
+        womanTeamMenber.addSkills(SkillsFactory.getSkillByCode(context,SkillsFactory.PING_A));
+
         teamMenbers = new ArrayList<>();
         teamMenbers.add(mainTeamMenber);
         teamMenbers.add(womanTeamMenber);
@@ -78,20 +82,22 @@ public class SaveData implements Serializable{
         return this;
     }
 
+    public List<Instance> getInstances() {
+        return instances;
+    }
+
+    public void setInstances(List<Instance> instances) {
+        this.instances = instances;
+    }
+
     private void initLibrary(Context context) {
 
         List<Skill> skills = SkillsFactory.getAllSkills();
         for (Skill skill:skills) {
             SharedPrefsUtil.putValue(context,Config.skillsLibrary,skill.getCode().toString(),GsonHelper.getGson().toJson(skill));
         }
+        //TODo : 装备的初始化先跳过
 
-
-    }
-
-    public void updateMenber(){
-        for (TeamMenber teamMenber:teamMenbers) {
-
-        }
     }
 
 

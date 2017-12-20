@@ -14,13 +14,13 @@ public class TeamMenber implements Serializable {
 
     private String name;
     private Integer L,M,T,J,RP;
-    private List<Skill> skills;
+    private SkillList skills;
     private List<Equipment> equipments;
     private Integer hp,mp;
     private Gender gender;
     private Double P;     //评价  属性、技能更改后会更新
 
-    public TeamMenber(String name,Gender gender, Integer l, Integer m, Integer t, Integer j, Integer RP, List<Skill> skills) {
+    public TeamMenber(String name,Gender gender, Integer l, Integer m, Integer t, Integer j, Integer RP) {
         this.name = name;
         this.gender = gender;
         L = l;
@@ -28,7 +28,6 @@ public class TeamMenber implements Serializable {
         T = t;
         J = j;
         this.RP = RP;
-        this.skills = skills;
     }
 
     public void updateP(){
@@ -124,7 +123,7 @@ public class TeamMenber implements Serializable {
 
     public void addSkills(Skill skill){
         if (skills==null){
-            skills = new ArrayList<>();
+            skills = new SkillList();
         }
         skills.add(skill);
         updateP();

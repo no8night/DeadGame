@@ -46,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
     private void startGame() {
         //初始化存檔
         saveData = new SaveData();
-        saveData.init();
+        saveData.init(this);
         saveData.save(this);
         Intent intent = new Intent(this,PlayActivity.class);
         intent.putExtra(Config.saveDataString,saveData);
