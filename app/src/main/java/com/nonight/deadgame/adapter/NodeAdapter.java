@@ -3,6 +3,8 @@ package com.nonight.deadgame.adapter;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Environment;
+import android.os.Handler;
+import android.os.Message;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,6 +12,8 @@ import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
+import com.hanks.htextview.base.AnimationListener;
+import com.hanks.htextview.base.HTextView;
 import com.hanks.htextview.fade.FadeTextView;
 import com.nonight.deadgame.R;
 import com.nonight.deadgame.model.InstanceNode;
@@ -29,13 +33,12 @@ public class NodeAdapter extends BaseAdapter {
     private boolean first = true;
     private Context context;
 
-
     public NodeAdapter(Context context, List<InstanceNode> objects) {
 
         this.list = objects;
         this.context = context;
-
     }
+
 
 
     @Override
@@ -55,7 +58,7 @@ public class NodeAdapter extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        InstanceNode instanceNode = list.get(position);
+        final InstanceNode instanceNode = list.get(position);
         View view = null;
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         final DramaViewHolder dramaViewHolder;
@@ -73,11 +76,17 @@ public class NodeAdapter extends BaseAdapter {
         if (instanceNode.getNodeType() == InstanceNodeType.DRAMA){
             view = inflater.inflate(R.layout.item_play_tv, parent, false);
             dramaViewHolder = new DramaViewHolder();
-            dramaViewHolder.fadeTextView = view.findViewById(R.id.item_play_tv_ftv);
-            dramaViewHolder.fadeTextView.setText(instanceNode.getDramaContent());
-        }else if (instanceNode.getNodeType() == InstanceNodeType.DRAMA){
+            dramaViewHolder.tv = view.findViewById(R.id.item_play_tv_ftv);
+            dramaViewHolder.tv.setText(instanceNode.getDramaContent());
 
-        }else if (instanceNode.getNodeType() == InstanceNodeType.DRAMA){
+
+        }else if (instanceNode.getNodeType() == InstanceNodeType.REWARD){
+            view = inflater.inflate(R.layout.item_play_tv, parent, false);
+            dramaViewHolder = new DramaViewHolder();
+            dramaViewHolder.tv = view.findViewById(R.id.item_play_tv_ftv);
+            dramaViewHolder.tv.setText(instanceNode.getRewardContent().getDramaString());
+            dramaViewHolder.tv.setTextColor(view.getResources().getColor(R.color.defaultpurple));
+        }else if (instanceNode.getNodeType() == InstanceNodeType.BATTLE){
 
         }else {
 
@@ -89,6 +98,6 @@ public class NodeAdapter extends BaseAdapter {
 
 
     class DramaViewHolder {
-        FadeTextView fadeTextView;
+        TextView tv;
     }
 }

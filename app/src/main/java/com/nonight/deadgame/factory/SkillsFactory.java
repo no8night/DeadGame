@@ -27,6 +27,7 @@ public class SkillsFactory {
         skill.setCode("1");
         skill.setIntroduction("List<Skill>");
         skill.setName("平a");
+        skill.setP(0.0);
         result.add(skill);
 
 

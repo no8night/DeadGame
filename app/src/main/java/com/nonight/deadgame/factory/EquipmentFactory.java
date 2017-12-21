@@ -20,7 +20,7 @@ public class EquipmentFactory {
         List<Equipment> result = new ArrayList<>();
 
         Equipment equipment = new Equipment();
-        equipment.setCode(1);
+        equipment.setCode("1");
         equipment.setName("P92");
         equipment.setIntroduction("一把性能不错的手枪");
 

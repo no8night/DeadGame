@@ -1,13 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+    xmlns:ripple="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:background="@color/black"
+    android:gravity="center_horizontal"
     android:layout_height="match_parent">
-
-    <ListView
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/play_lv"
+        android:layout_height="0dp"
+        android:layout_weight="5"
+        >
+        <ListView
 
-        ></ListView>
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/play_lv"
+            android:stackFromBottom="true"
+            android:transcriptMode="alwaysScroll"
+            ></ListView>
 
+    </LinearLayout>
+
+
+    <TextView
+        android:visibility="gone"
+        android:layout_weight="1"
+        android:id="@+id/play_finish_tv"
+        android:textStyle="bold"
+        android:textSize="23dp"
+        android:gravity="center"
+        android:textColor="@color/blue"
+        android:text="@string/return_c"
+        android:paddingBottom="20dp"
+        android:paddingTop="20dp"
+        android:paddingLeft="50dp"
+        android:paddingRight="50dp"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp" />
 </LinearLayout>

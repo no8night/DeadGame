@@ -37,7 +37,9 @@ public class StartInstanceFactory {
 
         List<InstanceNode> result = new ArrayList<>();
         for (int i =1;i<instance.getNodeNumber()+1;i++){
-            result.add(createNode(i));
+            InstanceNode instanceNode = createNode(i);
+            instanceNode.setInstanceSeq(i);
+            result.add(instanceNode);
 
 
         }
@@ -56,6 +58,7 @@ public class StartInstanceFactory {
             case 1:
                 instanceNode.setNodeType(InstanceNodeType.DRAMA);
                 instanceNode.setDramaContent(drama1);
+
                 break;
             case 2:
                 instanceNode.setNodeType(InstanceNodeType.DRAMA);
@@ -83,17 +86,19 @@ public class StartInstanceFactory {
 
                 break;
             case 7:
-                instanceNode.setNodeType(InstanceNodeType.DRAMA);
-                instanceNode.setDramaContent(drama7);
 
-                break;
-            case 8:
                 instanceNode.setNodeType(InstanceNodeType.REWARD);
                 RewardContent rewardContent = new RewardContent();
-                rewardContent.setDramaString(drama8);
+                rewardContent.setDramaString(drama7);
                 rewardContent.setRewardPoint(rewardPoint);
 
                 instanceNode.setRewardContent(rewardContent);
+
+                break;
+            case 8:
+                instanceNode.setNodeType(InstanceNodeType.DRAMA);
+                instanceNode.setDramaContent(drama8);
+
 
                 break;
         }
@@ -106,7 +111,7 @@ public class StartInstanceFactory {
     private static final String drama4 = "而在冒险世界中，他们需要完成主神指定的任务，克服一个又一个的难关和挑战。";
     private static final String drama5 = "每完成一次冒险世界，他们每人将最少会500点奖励点，奖励点可以在主神处兑换各种的能力、物品，从而提升自己。";
     private static final String drama6 = "当小队在主神处的评价达到所期望的评价时，小队将会被派往完成最终任务，完成最终挑战后，队员们则可以带着兑换的能力和物品返回现实世界。";
-    private static final String drama7 = ">现在，他们3人每人身上有100点奖励点数。";
+    private static final String drama7 = "现在，他们3人每人身上有100点奖励点数。";
 
     private static final String drama8 = "在30分钟后，他们即将进入他们的第一个冒险世界。";
 

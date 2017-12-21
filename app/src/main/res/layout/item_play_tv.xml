@@ -6,14 +6,33 @@
     android:layout_height="match_parent">
 
 
-    <com.hanks.htextview.fade.FadeTextView
+    <TextView
+
+
         android:id="@+id/item_play_tv_ftv"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="left"
         android:letterSpacing="0.08"
         android:lineSpacingMultiplier="1.3"
-        android:textColor="#fff"
-        android:textSize="20sp"
-        app:animationDuration="1500"/>
+        android:textColor="@color/white"
+        android:textSize="20sp"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        >
+    <ImageView
+        android:layout_marginBottom="5dp"
+        android:layout_marginTop="3dp"
+        android:layout_marginRight="15dp"
+        android:layout_alignParentRight="true"
+        android:layout_width="15dp"
+        android:layout_height="15dp"
+        android:src="@mipmap/icon_down_tra"
+        />
+
+
+    </RelativeLayout>
 </LinearLayout>

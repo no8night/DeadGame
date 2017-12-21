@@ -11,7 +11,7 @@ import java.io.Serializable;
 
 public class InstanceNode implements Serializable {
 
-    private Integer id;
+    private Integer id,instanceSeq;
     private NodeStatus status;
     private InstanceNodeType nodeType;
 
@@ -67,5 +67,13 @@ public class InstanceNode implements Serializable {
 
     public void setNodeType(InstanceNodeType nodeType) {
         this.nodeType = nodeType;
+    }
+
+    public Integer getInstanceSeq() {
+        return instanceSeq;
+    }
+
+    public void setInstanceSeq(Integer instanceSeq) {
+        this.instanceSeq = instanceSeq;
     }
 }

@@ -173,6 +173,14 @@ public class SaveData implements Serializable{
     public void setItems(List<Item> items) {
         this.items = items;
     }
+    public void addItems(List<Item> items) {
+
+        if (this.items == null){
+            this.items = new ArrayList<>();
+        }
+        this.items .addAll(items);
+    }
+
 
     public Date getCreateDate() {
         return createDate;

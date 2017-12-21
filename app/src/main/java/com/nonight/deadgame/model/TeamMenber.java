@@ -46,7 +46,9 @@ public class TeamMenber implements Serializable {
         }
         //计算技能评分
         for (Skill skill: skills) {
-            P = P + skill.getP();
+            if (skill!=null) {
+                P = P + skill.getP();
+            }
         }
 
     }
