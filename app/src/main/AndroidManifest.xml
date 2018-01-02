@@ -20,9 +20,8 @@
 
         </activity>
 
-        <activity android:name="com.nonight.deadgame.activity.PlayActivity">
-
-        </activity>
+        <activity android:name="com.nonight.deadgame.activity.PlayActivity"/>
+        <activity android:name="com.nonight.deadgame.activity.LoadingActivity"/>
     </application>
 
 </manifest>

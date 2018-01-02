@@ -1,5 +1,7 @@
 
-1.按钮点击波纹效果   https://github.com/traex/RippleEffect
+1. 有bug先不用
+/*
+按钮点击波纹效果   https://github.com/traex/RippleEffect
 dependencies {
     compile 'com.github.traex.rippleeffect:library:1.3'
 }
@@ -26,7 +28,7 @@ If you want to know when the Ripple effect is finished, you can set a listener o
             Log.d("Sample", "Ripple completed");
         }
 
-    });
+    });*/
 
 2.textview 效果
 https://github.com/hanks-zyh/HTextView
@@ -37,4 +39,11 @@ https://github.com/AdityaAnand1/Morphing-Material-Dialogs
 
 https://github.com/andyxialm/ColorDialog
 
+4.loading
+Gradle compile 'com.ldoublem.loadingview:loadingviewlib:1.0'
+https://github.com/ldoublem/LoadingView
+LVLineWithText
+setViewColor(int color)
+setTextColor(int color)
+setValue(int value)//0-100
 

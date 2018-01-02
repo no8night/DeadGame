@@ -106,6 +106,19 @@ public class SaveData implements Serializable{
         SharedPrefsUtil.putValue(context,Config.saveDataString,Config.saveDataKeyString,saveDataString);
     }
 
+    public SaveData load(Context context){
+        String saveDataString =  SharedPrefsUtil.getValue(context,Config.saveDataString,Config.saveDataKeyString,null);
+        if (saveDataString ==null ){
+            return  null;
+
+        }
+
+
+        return GsonHelper.getGson().fromJson(saveDataString,SaveData.class);
+
+
+    }
+
     public static  SaveData loadSaveData(Context context){
         String saveDataString = SharedPrefsUtil.getValue(context,Config.saveDataString,Config.saveDataKeyString,null);
         SaveData saveData = null;

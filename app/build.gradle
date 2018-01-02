@@ -35,10 +35,12 @@ dependencies {
     compile "com.hanks:htextview-evaporate:$htextview_version"
     compile "com.hanks:htextview-fall:$htextview_version"
     // optional
-    //波纹特效
-    compile 'com.github.traex.rippleeffect:library:1.3'
+
     //dialog
 //    implementation 'com.github.AdityaAnand1:Morphing-Material-Dialogs:0.0.1-alpha2'
     compile 'com.github.andyxialm:ColorDialog:1.0.0'
     implementation 'com.android.support:design:27.0.2'
+
+    //loading
+    compile 'com.ldoublem.loadingview:loadingviewlib:1.0'
 }

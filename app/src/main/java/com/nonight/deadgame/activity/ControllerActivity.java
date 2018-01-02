@@ -2,9 +2,11 @@ package com.nonight.deadgame.activity;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.widget.TextView;
 
 import com.nonight.deadgame.R;
 import com.nonight.deadgame.model.SaveData;
+import com.nonight.deadgame.model.enums.TeamStatus;
 import com.nonight.deadgame.utils.BGMManager;
 import com.nonight.deadgame.utils.Config;
 
@@ -16,6 +18,7 @@ public class ControllerActivity extends Activity {
     BGMManager bgmManager;
     boolean isBGMContinue = true;
     SaveData saveData;
+    TextView status_tv;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -23,6 +26,31 @@ public class ControllerActivity extends Activity {
         if (getIntent()!=null){
             saveData = (SaveData) getIntent().getSerializableExtra(Config.saveDataString);
         }
+        initview();
+
+    }
+
+    private void initview() {
+
+        status_tv = findViewById(R.id.control_status_tv);
+        setStatusTv();
+
+    }
+
+    private void setStatusTv() {
+        if (saveData.getTeamStatus() == TeamStatus.READY){
+
+            StringBuffer sb = new StringBuffer();
+            sb.append("团队人数 ： ");
+            sb.append(saveData.getTeamMenbers().size());
+            sb.append("    奖励点 ： ");
+            sb.append(saveData.getRewardPoint());
+
+            status_tv.setText(sb.toString());
+
+
+        }
+
     }
 
     @Override

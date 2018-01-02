@@ -7,9 +7,12 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.nonight.deadgame.R;
+import com.nonight.deadgame.model.enums.TeamStatus;
 import com.nonight.deadgame.utils.BGMManager;
 import com.nonight.deadgame.model.SaveData;
 import com.nonight.deadgame.utils.Config;
+
+import cn.refactor.lib.colordialog.PromptDialog;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -58,7 +61,7 @@ public class MainActivity extends AppCompatActivity {
             switch (v.getId()){
 
                 case R.id.main_contune_tv:
-
+                    loading();
                     break;
 
                 case R.id.main_start_tv:
@@ -79,6 +82,44 @@ public class MainActivity extends AppCompatActivity {
         }
     };
 
+    private void loading() {
+        saveData = SaveData.loadSaveData(this);
+
+        if (saveData == null){
+            new PromptDialog(this)
+                    .setDialogType(PromptDialog.DIALOG_TYPE_WRONG)
+                    .setAnimationEnable(true)
+                    .setContentText("没有存档或者存档损坏！")
+                    .setTitleText("WARNING")
+                    .setPositiveListener("OK", new PromptDialog.OnPositiveListener() {
+                        @Override
+                        public void onClick(PromptDialog dialog) {
+                            dialog.dismiss();
+                        }
+                    }).show();
+
+
+            return;
+        }
+
+        if (saveData.getTeamStatus() == TeamStatus.READY){
+            Intent intent = new Intent(this,ControllerActivity.class);
+            intent.putExtra(Config.saveDataString,saveData);
+            startActivity(intent);
+
+        }else if (saveData.getTeamStatus() == TeamStatus.PLAYING){
+            Intent intent = new Intent(this,PlayActivity.class);
+            intent.putExtra(Config.saveDataString,saveData);
+            startActivity(intent);
+
+        }else if (saveData.getTeamStatus() == TeamStatus.FAILED){
+
+
+        }
+
+
+
+    }
 
 
     @Override

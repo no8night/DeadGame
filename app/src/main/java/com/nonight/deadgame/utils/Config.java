@@ -14,4 +14,6 @@ public class Config {
 
 
     public static final String skillsLibrary = "skillsLibrary";
+
+    public static final String targetIntent = "targetIntent";
 }
