@@ -14,6 +14,7 @@ import android.widget.TextView;
 
 import com.nonight.deadgame.R;
 import com.nonight.deadgame.adapter.NodeAdapter;
+import com.nonight.deadgame.config.MusicConfig;
 import com.nonight.deadgame.model.Instance;
 import com.nonight.deadgame.model.InstanceNode;
 import com.nonight.deadgame.model.Item;
@@ -23,6 +24,8 @@ import com.nonight.deadgame.model.enums.InstanceNodeType;
 import com.nonight.deadgame.model.enums.InstanceStatus;
 import com.nonight.deadgame.model.enums.NodeStatus;
 import com.nonight.deadgame.model.enums.TeamStatus;
+import com.nonight.deadgame.service.BGMService;
+import com.nonight.deadgame.service.BGMServiceConnection;
 import com.nonight.deadgame.utils.BGMManager;
 import com.nonight.deadgame.utils.Config;
 import com.nonight.deadgame.utils.ThreadManager;
@@ -37,8 +40,6 @@ import cn.refactor.lib.colordialog.PromptDialog;
  */
 public class PlayActivity extends Activity {
 
-    BGMManager bgmManager;
-    boolean isBGMContinue = true;
     SaveData saveData;
     ListView listView;
     TextView finish_tv;
@@ -81,7 +82,7 @@ public class PlayActivity extends Activity {
             saveData = (SaveData) getIntent().getSerializableExtra(Config.saveDataString);
         }
         initview();
-
+        conn = new BGMServiceConnection(MusicConfig.getPlayMusicList());
     }
 
     private void initview() {
@@ -286,54 +287,33 @@ public class PlayActivity extends Activity {
         }
     }
 
-
+    BGMService service;
+    private BGMServiceConnection conn;
     @Override
     protected void onResume() {
         super.onResume();
-        if (bgmManager == null)
-            bgmManager = BGMManager.getInstance(this);
-        isBGMContinue = true;
-        if (bgmThread != null)
-            bgmThread.start();
+
+
+        service = conn.getService();
+        if (service == null) {
+            Intent intent = new Intent(this, BGMService.class);
+            bindService(intent, conn, BIND_AUTO_CREATE);
+        } else if (service.isAutoPlay()) {
+            service.setBGMList(MusicConfig.getPlayMusicList());
+            service.startMusic();
+        }
     }
 
     @Override
     protected void onStop() {
         super.onStop();
-        isBGMContinue = false;
-        bgmManager.stopBackgroundMusic();
+        service = conn.getService();
+        service.stopMusic(MusicConfig.getPlayMusicList());
     }
 
-
-    Thread bgmThread = new Thread(new Runnable() {
-        @Override
-        public void run() {
-
-            while (isBGMContinue) {
-                int music_seq = 0;
-                if (!bgmManager.isBackgroundMusicPlaying()) {
-                    switch (music_seq) {
-                        case 1:
-                            music_seq = 2;
-                            bgmManager.playBackgroundMusic("bgm/p_bgm_1.mp3", false);
-                            break;
-                        case 2:
-                            music_seq = 1;
-                            bgmManager.playBackgroundMusic("bgm/p_bgm_2.mp3", false);
-                            break;
-                        default:
-                            music_seq = 1;
-                            bgmManager.playBackgroundMusic("bgm/p_bgm_2.mp3", false);
-                            break;
-                    }
-
-                }
-                try {
-                    Thread.sleep(2000);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-            }
-        }
-    });
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        unbindService(conn);
+    }
 }

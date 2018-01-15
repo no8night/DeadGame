@@ -24,23 +24,13 @@ dependencies {
     testCompile 'junit:junit:4.12'
     implementation 'com.android.support:appcompat-v7:27.0.2'
     compile 'com.google.code.gson:gson:2.8.2'
-    //textview 特效
-    def htextview_version = "0.1.2"
-    compile "com.hanks:htextview-base:$htextview_version"
-    compile "com.hanks:htextview-fade:$htextview_version"
-    compile "com.hanks:htextview-line:$htextview_version"
-    compile "com.hanks:htextview-rainbow:$htextview_version"
-    compile "com.hanks:htextview-typer:$htextview_version"
-    compile "com.hanks:htextview-scale:$htextview_version"
-    compile "com.hanks:htextview-evaporate:$htextview_version"
-    compile "com.hanks:htextview-fall:$htextview_version"
-    // optional
-
     //dialog
-//    implementation 'com.github.AdityaAnand1:Morphing-Material-Dialogs:0.0.1-alpha2'
+    //    implementation 'com.github.AdityaAnand1:Morphing-Material-Dialogs:0.0.1-alpha2'
     compile 'com.github.andyxialm:ColorDialog:1.0.0'
     implementation 'com.android.support:design:27.0.2'
-
     //loading
     compile 'com.ldoublem.loadingview:loadingviewlib:1.0'
+    //menu
+    compile 'com.github.skydoves:powermenu:1.0.8'
+    implementation 'com.android.support:cardview-v7:27.0.2'
 }

@@ -12,9 +12,6 @@ import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
-import com.hanks.htextview.base.AnimationListener;
-import com.hanks.htextview.base.HTextView;
-import com.hanks.htextview.fade.FadeTextView;
 import com.nonight.deadgame.R;
 import com.nonight.deadgame.model.InstanceNode;
 import com.nonight.deadgame.model.enums.InstanceNodeType;

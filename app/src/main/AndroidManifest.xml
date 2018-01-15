@@ -22,6 +22,9 @@
 
         <activity android:name="com.nonight.deadgame.activity.PlayActivity"/>
         <activity android:name="com.nonight.deadgame.activity.LoadingActivity"/>
+
+
+        <service android:name=".service.BGMService" />
     </application>
 
 </manifest>
