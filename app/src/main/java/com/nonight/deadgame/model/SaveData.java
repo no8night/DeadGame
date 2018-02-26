@@ -33,7 +33,7 @@ public class SaveData implements Serializable{
     private List<Item> items;
     private List<TeamMenber> teamMenbers;        //队伍成员
     private List<Instance> instances;            //曾经经历过的副本
-
+    private List<Matter> matters;
     private Date createDate;
     private Date updateDate;
 
@@ -217,5 +217,25 @@ public class SaveData implements Serializable{
 
     public void setTeamStatus(TeamStatus teamStatus) {
         this.teamStatus = teamStatus;
+    }
+
+    public List<Matter> getMatters() {
+        return matters;
+    }
+
+    public void setMatters(List<Matter> matters) {
+        this.matters = matters;
+    }
+
+
+    public void addMatter(Context context,Matter matter) {
+
+        if (matters == null){
+
+            matters = new ArrayList<>();
+        }
+        matters.add(matter);
+
+        save(context);
     }
 }

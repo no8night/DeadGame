@@ -8,11 +8,14 @@ import android.view.KeyEvent;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import com.nonight.deadgame.R;
 import com.nonight.deadgame.config.MusicConfig;
+import com.nonight.deadgame.model.Matter;
 import com.nonight.deadgame.model.SaveData;
+import com.nonight.deadgame.model.enums.MatterType;
 import com.nonight.deadgame.model.enums.TeamStatus;
 import com.nonight.deadgame.service.BGMService;
 import com.nonight.deadgame.service.BGMServiceConnection;
@@ -23,6 +26,8 @@ import com.skydoves.powermenu.MenuAnimation;
 import com.skydoves.powermenu.OnMenuItemClickListener;
 import com.skydoves.powermenu.PowerMenu;
 import com.skydoves.powermenu.PowerMenuItem;
+
+import java.util.Date;
 
 /**
  * Created by nonight on 2017/12/17.
@@ -37,6 +42,7 @@ public class ControllerActivity extends Activity {
     PowerMenu powerMenu;
     LinearLayout main_ll;
     BGMServiceConnection conn ;
+    private ListView control_lv;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,7 +57,7 @@ public class ControllerActivity extends Activity {
     private void initview() {
 
         status_tv = findViewById(R.id.control_status_tv);
-        setStatusTv();
+
 
         start_tv = findViewById(R.id.control_start_tv);
         start_tv.setOnClickListener(listener);
@@ -66,6 +72,18 @@ public class ControllerActivity extends Activity {
         menu_iv.setOnClickListener(listener);
 
         main_ll = findViewById(R.id.control_main_ll);
+
+        control_lv = findViewById(R.id.control_main_lv);
+
+        setStatusTv();
+        if (saveData.getMatters()==null || saveData.getMatters().size() ==0){
+            Matter matter = new Matter();
+            matter.setCode(0);
+            matter.setDiscription("欢迎来到主神空间！");
+            matter.setTime(new Date());
+            matter.setType(MatterType.COMMON);
+            saveData.addMatter(this,matter);
+        }
 
     }
 
